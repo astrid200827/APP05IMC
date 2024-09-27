@@ -7,7 +7,7 @@ def main(page: ft.Page):
     
     txtPeso=ft.TextField(label="ingresa tu peso")
     txtAltura=ft.TextField(label="Ingresa tu altura")
-    lblIMCV=ft.Text("Tu IMC es de: ")
+    lblIMC=ft.Text("Tu IMC es de: ")
     
     img=ft.Image(
         src="https://github.com/Prof-Luis1986/Recursos/blob/main/Bascula.png",
@@ -21,13 +21,13 @@ def main(page: ft.Page):
     
     page.add(
         ft.Column(
-            Controls=[
-                txtPeso,txtAltura,lblIMCV
-            ],alignment="CENTER")
+            controls=[
+                txtPeso,txtAltura,lblIMC
+            ],alignment="CENTER"),
         ft.Row(
-            Controls=[
+            controls=[
                 img
-            ],alignment="CENTER")
+            ],alignment="CENTER"),
         ft.Row(
             controls=[
                 btnCalcular,btnLimpiar
@@ -38,9 +38,4 @@ def main(page: ft.Page):
     
     
     
-    ft.app(target=main,view=ft.AppView.WEB_BROWSER)
-    
-
-
-
-ft.app(main)
+ft.app(target=main,view=ft.AppView.WEB_BROWSER)
