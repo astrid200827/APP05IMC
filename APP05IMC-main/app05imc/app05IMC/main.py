@@ -13,44 +13,39 @@ def calcular_imc(txtPeso,txtAltura,lblIMC,page):
             page.dialog.open=False
             page.update()
     
-    #Validación del IMC
-    
-    if imc<18.5:
-        
-        dialog=ft.AlertDialog(
-            title="Bajo de peso",
-            content="Tu IMC indica que tienes bajo peso",
-            actions=[
-                ft.TextButton(text="Cerrar",on_click=cerrar_dialogo)
-            ]
-        )
-    
-    elif imc>=18.5 and imc<24.9:
-        dialog=ft.AlertDialog(
-            
-            title="Peso normal",
-            content="Tu IMC indica que tienes un peso normal",
-            actions=[
-                ft.TextButton(text="Cerrar",on_click=cerrar dialogo)
-            ]
-        )
-    alif imc>25 and imc<30:
-        dialog=ft.AlertDialog(
+        #Validación del IMC
+        if imc<18.5:
+            dialog=ft.AlertDialog(
+                title="Bajo de peso",
+                content="Tu IMC indica que tienes bajo peso",
+                actions=[
+                    ft.TextButton(text="Cerrar",on_click=cerrar_dialogo)
+                ]
+            )
+        elif imc>=18.5 and imc<24.9:
+            dialog=ft.AlertDialog(
+                title="Peso normal",
+                content="Tu IMC indica que tienes un peso normal",
+                actions=[
+                    ft.TextButton(text="Cerrar",on_click=cerrar_dialogo)
+                ]
+            )
+        elif imc>25 and imc<30:
+            dialog=ft.AlertDialog(
             title="Sobrepeso",
             content="Tu IMC indica que tienes un peso normal",
             actions=[
-                ft.TextButton(text="Cerrar",on_click=cerrar dialogo)
-            ]
-        )
-    else:
-        dialog=ft.AlertDialog(
-            
-            title="Obesidad",
-            content="Tu IMC indica que tienes obecidad, acude a tu medico",
-            actions=[
                 ft.TextButton(text="Cerrar",on_click=cerrar_dialogo)
-            ]
-        )
+                ]
+            )
+        else:
+            dialog=ft.AlertDialog(
+                title="Obesidad",
+                content="Tu IMC indica que tienes obecidad, acude a tu medico",
+                actions=[
+                    ft.TextButton(text="Cerrar",on_click=cerrar_dialogo)
+                ]
+            )
         
         page.dialog=dialog
         page.dialog.open=False
@@ -77,6 +72,16 @@ def main(page: ft.Page):
         fit=ft.ImageFit.CONTAIN
     )
     
+    
+    def on_calcular(Event):
+        calcular_imc(txtPeso,txtAltura,lblIMC,page)
+        
+    def limpiar(e):
+        txtPeso.value=""
+        txtAltura.value=""
+        lblIMC.value"Tu IMC  es de: "
+        page.update()
+        
     btnCalcular=ft.ElevatedButton(text="Calcular")
     btnLimpiar=ft.ElevatedButton(text="Limpiar")
     
